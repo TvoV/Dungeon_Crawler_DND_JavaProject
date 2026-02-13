@@ -1,4 +1,6 @@
-package com.alex.entities;
+package com.alex.entities.enemies;
+
+import com.alex.entities.Entity;
 
 import java.util.Random;
 
@@ -9,7 +11,7 @@ public class Enemy extends Entity {
     // ----------------------------------------------------------------------
 
     private Random random;
-
+    private int defense;
     // ----------------------------------------------------------------------
     // Constructor
     // ----------------------------------------------------------------------
@@ -21,7 +23,8 @@ public class Enemy extends Entity {
                            int restHp,
                            int mp,
                            int startMp,
-                           int restMp
+                           int restMp,
+                           int defense
     ){
         super(
                 name,
@@ -31,6 +34,7 @@ public class Enemy extends Entity {
                 mp,
                 startMp,
                 restMp);
+        this.defense = defense;
         random = new Random();
     }
 
@@ -38,6 +42,14 @@ public class Enemy extends Entity {
     // Methods
     // ----------------------------------------------------------------------
 
+    public int pickAttack()
+    {
+        int choice = 0;
+        choice = random.nextInt(1, 4);
+        return choice;
+    }
+
+    @Override
     public int attack()
     {
         int dmg = random.nextInt(15,20) + 1;
@@ -57,10 +69,8 @@ public class Enemy extends Entity {
         return dmg;
     }
 
-    public int pickattack()
-    {
-        int choice = 0;
-        choice = random.nextInt(0, 3) + 1;
-        return choice;
+    public int getDefense() {
+        return this.defense;
     }
+
 }

@@ -1,4 +1,4 @@
-package com.alex.entities;
+package com.alex.entities.enemies;
 
 import java.util.Random;
 
@@ -10,34 +10,37 @@ public class Necromancer extends Enemy {
                        int restHp,
                        int mp,
                        int startMp,
-                       int restMp) {
+                       int restMp,
+                       int defense) {
         super(name,
                 hp,
                 startHp,
                 restHp,
                 mp,
                 startMp,
-                restMp);
+                restMp,
+                defense);
     }
 
     @ Override
     public int attack()
     {
-        int dmg = random.nextInt(6,8) + 1;
+        this.setCurrentState("Attack");
+        int dmg = random.nextInt(6,11);
         return dmg;
     }
 
     @ Override
     public int sattack()
     {
+        this.setCurrentState("Eldritch Blast!");
         int dmg = 0;
-        int hit = random.nextInt(0, 100) + 1;
-        if (hit < 70)
+        int hit = random.nextInt(0, 101);
+        if (hit <= 70)
         {
-            dmg = random.nextInt(20,30) + 1;
+            dmg = random.nextInt(24,31);
             return dmg;
         }
-        System.out.println("Attack has missed!");
         return dmg;
     }
 }

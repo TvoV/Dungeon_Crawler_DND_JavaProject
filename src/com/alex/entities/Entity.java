@@ -1,18 +1,19 @@
 package com.alex.entities;
 
-public class Entity {
+public abstract class Entity {
 
     // ----------------------------------------------------------------------
     // Attributes
     // ----------------------------------------------------------------------
 
-    private String name = "";
-    private int hp = 0;
-    private int startHp = 0;
-    private int restHp = 0;
-    private int mp = 0;
-    private int startMp = 0;
-    private int restMp = 0;
+    protected String name = "";
+    protected int hp = 0;
+    protected int startHp = 0;
+    protected int restHp = 0;
+    protected int mp = 0;
+    protected int startMp = 0;
+    protected int restMp = 0;
+    private String currentState;
 
     // ----------------------------------------------------------------------
     // Constructor
@@ -34,28 +35,25 @@ public class Entity {
         this.mp = mp;
         this.startMp = startMp;
         this.restMp = restMp;
+        this.currentState = "";
     };
 
     // ----------------------------------------------------------------------
     // Basic Methods
     // ----------------------------------------------------------------------
-    /*
-    public void attack() {
-        System.out.println("Is attacking");
-    };
 
-    public void sattack() {
-        System.out.println("Is attacking");
-    };
+    public abstract int attack();
 
-    public void defend() {
-        System.out.println("Is defending");
-    };
+    public abstract int sattack();
 
-    public void takeAction() {
-        System.out.println("Takes action");
-    };
-    */
+    public abstract int getDefense();
+
+    public int takeDamage(int amount){
+        int actualDamage = Math.max(0, amount - getDefense());
+        this.hp = Math.max(0, this.hp - actualDamage);
+        return actualDamage;
+    }
+
     // ----------------------------------------------------------------------
     // Getter
     // ----------------------------------------------------------------------
@@ -86,6 +84,10 @@ public class Entity {
 
     public int getRestMp() {
         return restMp;
+    }
+
+    public String getCurrentState() {
+        return this.currentState;
     }
 
 
@@ -119,6 +121,10 @@ public class Entity {
 
     public void setRestMp(int restMp) {
         this.restMp = restMp;
+    }
+
+    public void setCurrentState(String currentState) {
+        this.currentState = currentState;
     }
 
 }

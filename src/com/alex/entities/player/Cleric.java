@@ -1,11 +1,11 @@
-package com.alex.entities;
+package com.alex.entities.player;
 
 import com.alex.items.Armor;
 import com.alex.items.Weapon;
 
 import java.util.Random;
 
-public class Cleric extends PlayerCharacter{
+public class Cleric extends PlayerCharacter {
 
     Random random = new Random();
     public Cleric(String name,
@@ -36,44 +36,58 @@ public class Cleric extends PlayerCharacter{
                 armor);
     }
 
-    public Weapon equipWeapon(Weapon weapon){
-        this.weapon = weapon;
-        return this.weapon;
-    }
-
-    public Armor equipArmor(Armor armor){
-        this.armor = armor;
-        return this.armor;
-    }
-
     @ Override
     public int attack()
     {
+        this.setCurrentState("Attack");
         int as = weapon.getAttackstat();
         int wb = weapon.getWeaponbonus();
-        int dmg = random.nextInt(10,14) + 1 + as + (wb / 2);
+        int dmg = random.nextInt(10,15) + as + (wb / 2);
         return dmg;
     }
 
     @ Override
     public int sattack()
     {
+        this.setCurrentState("Guiding Bolt");
         int as = weapon.getAttackstat();
         int wb = weapon.getWeaponbonus();
         int dmg = 0;
-        int hit = random.nextInt(0, 100) + 1;
-        if (hit < 15)
+        int hit = random.nextInt(0, 101) + 1;
+        if (hit <= 15)
         {
-            dmg = random.nextInt(24,32) + 1 + as + (wb / 2);
-            System.out.println("Critical hit!");
+            dmg = random.nextInt(24,33) + as + (wb / 2);
+            this.setCurrentState("critical Guiding Bolt");
             return dmg;
         }
-        if (hit < 85)
+        else if (hit <= 85)
         {
-            dmg = random.nextInt(16,24) + 1 + as + (wb / 2);
+            dmg = random.nextInt(16,25) + as + (wb / 2);
             return dmg;
         }
-        System.out.println("Attack has missed!");
         return dmg;
     }
+
+    @ Override
+    public int getStrength() {
+        return super.getStrength() + this.getWeapon().getWeaponbonus();
+    }
+
+    @ Override
+    public int getConstitution() {
+        return super.getConstitution() + this.getArmor().getArmorbonus();
+    }
+
+    @Override
+    public int getStartHp() {
+        return super.getStartHp() + this.getArmor().getArmorbonus() * 4;
+    }
+
+    @ Override
+    public int getHp() {
+        if (armor != null)
+            return super.getHp() + this.getArmor().getArmorbonus() * 4;
+        return super.getHp();
+    }
 }
+

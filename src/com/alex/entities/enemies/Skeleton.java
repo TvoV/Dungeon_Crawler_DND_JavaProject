@@ -1,4 +1,4 @@
-package com.alex.entities;
+package com.alex.entities.enemies;
 
 import java.util.Random;
 
@@ -11,20 +11,23 @@ public class Skeleton extends Enemy {
                     int restHp,
                     int mp,
                     int startMp,
-                    int restMp) {
+                    int restMp,
+                    int defense) {
         super(name,
                 hp,
                 startHp,
                 restHp,
                 mp,
                 startMp,
-                restMp);
+                restMp,
+                defense);
     }
 
     @ Override
     public int attack()
     {
-        int dmg = random.nextInt(8,10) + 1;
+        this.setCurrentState("Attack");
+        int dmg = random.nextInt(8,11);
         return dmg;
     }
 

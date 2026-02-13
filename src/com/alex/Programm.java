@@ -1,5 +1,6 @@
 package com.alex;
-import com.alex.entities.*;
+import com.alex.entities.enemies.*;
+import com.alex.entities.player.*;
 import com.alex.items.Armor;
 import com.alex.items.Weapon;
 
@@ -8,6 +9,8 @@ import java.util.Scanner;
 
 public class Programm {
     public static void main(String[] args) {
+
+        /*
 
         // ----------------------------------------------------------------------
         // Objekt Initialisierung
@@ -63,19 +66,19 @@ public class Programm {
         // Armor Objects (Plate Armor)
         // ----------------------------------------------------------------------
 
-        Armor heavyarmor1 = new Armor("Old Chestplate", 4, 1, false, 4, 0);
-        Armor heavyarmor2 = new Armor("Sturdy Plate", 8, 2, false, 8, 2);
-        Armor heavyarmor3 = new Armor("Berserker Armor", 20, 5, false, 12, 8);
-        Armor heavyarmor4 = new Armor("Divine Vestige", 20, 5, false, 20, 0);
+        Armor heavyarmor1 = new Armor("Old Chestplate", 4, 1, false, 2, 0);
+        Armor heavyarmor2 = new Armor("Sturdy Plate", 8, 2, false, 6, 2);
+        Armor heavyarmor3 = new Armor("Berserker Armor", 20, 5, false, 10, 8);
+        Armor heavyarmor4 = new Armor("Divine Vestige", 20, 5, false, 20, 2);
 
         // ----------------------------------------------------------------------
         // Armor Objects (Leather Armor)
         // ----------------------------------------------------------------------
 
         Armor mediumarmor1 = new Armor("Worn Leather", 4, 1, false, 2, 0);
-        Armor mediumarmor2 = new Armor("Reinforced Leather", 8, 2, false, 6, 4);
-        Armor mediumarmor3 = new Armor("Studded Leather", 16, 4, false, 12, 6);
-        Armor mediumarmor4 = new Armor("Combat Suit", 20, 5, false, 16, 8);
+        Armor mediumarmor2 = new Armor("Reinforced Leather", 8, 2, false, 4, 4);
+        Armor mediumarmor3 = new Armor("Studded Leather", 16, 4, false, 8, 6);
+        Armor mediumarmor4 = new Armor("Combat Suit", 20, 5, false, 12, 8);
 
         // ----------------------------------------------------------------------
         // Armor Objects (Cloth Armor)
@@ -83,8 +86,8 @@ public class Programm {
 
         Armor lightarmor1 = new Armor("Tattered Cloak", 4, 1, false, 2, 2);
         Armor lightarmor2 = new Armor("Robes", 8, 2, false, 4, 4);
-        Armor lightarmor3 = new Armor("Padded Garments", 20, 5, false, 6, 8);
-        Armor lightarmor4 = new Armor("Archmage Heraldry", 20, 5, false, 8, 12);
+        Armor lightarmor3 = new Armor("Padded Garments", 20, 5, false, 6, 6);
+        Armor lightarmor4 = new Armor("Archmage Heraldry", 20, 5, false, 8, 8);
 
         // ----------------------------------------------------------------------
         // Arrays of Objects (Armors)
@@ -177,41 +180,58 @@ public class Programm {
         System.out.println("Name your Character: ");
         characterName = scanner.nextLine();
 
-        System.out.println("");
+        System.out.println("Would you like to check your stats? 1. Yes, 2. No");
+        int statcheck = Integer.valueOf( scanner.nextLine());
+        if (statcheck == 1){
+            character.checkstats();
+        }
+
         System.out.println(characterName + " wields " + character.getWeapon().getName() + " & " + character.getArmor().getName());
+        System.out.println("");
 
         // ----------------------------------------------------------------------
         // Encounter randomizer
         // ----------------------------------------------------------------------
 
-        int select = random.nextInt(4) + 1;
-        if (select == 1) {
+        System.out.println("Ready to enter the dungeon? 1. Yes, 2. No");
+        int start = Integer.valueOf( scanner.nextLine());
+        /*
+        if (start == 1){
             System.out.println("");
-            System.out.println(characterName + " steps further into the hallway.");
-            System.out.println("");
+            System.out.println("You enter the Dungeon.");
+            int select = random.nextInt(4) + 1;
+            if (select == 1) {
+                System.out.println("");
+                System.out.println(characterName + " steps further into the hallway.");
+                System.out.println("");
+            }
+            if (select == 2) {
+                System.out.println("");
+                System.out.println(characterName + " steps further into the room.");
+                System.out.println("");
+            }
+            if (select == 3) {
+                System.out.println("");
+                System.out.println("Something lurches at " + characterName + " from the dark.");
+                System.out.println("");
+            }
+            if (select == 4) {
+                System.out.println("");
+                System.out.println(characterName + " hears a noise from behind.");
+                System.out.println("");
+            }
         }
-        if (select == 2) {
-            System.out.println("");
-            System.out.println(characterName + " steps further into the room.");
-            System.out.println("");
+        else {
+            System.out.println("You fled the Dungeon like a coward.");
+            return;
         }
-        if (select == 3) {
-            System.out.println("");
-            System.out.println("Something lurches at " + characterName + " from the dark.");
-            System.out.println("");
-        }
-        if (select == 4) {
-            System.out.println("");
-            System.out.println(characterName + " hears a noise from behind.");
-            System.out.println("");
-        }
+
 
         // ----------------------------------------------------------------------
         // Gegner Auswahl Computer
         // ----------------------------------------------------------------------
 
-
-        select = random.nextInt(6) + 1;
+        int select = random.nextInt(6) + 1;
         if (select == 1) {
             System.out.println(characterName + " has encountered a Skeleton.");
             System.out.println("");
@@ -287,11 +307,11 @@ public class Programm {
         int def = character.getArmor().getDefensestat();
         for (int i = 0; i < 1; i++) {
             do {
-                int choice = enemy.pickattack();
+                int choice = enemy.pickAttack();
                 if (choice == 1 || choice == 2) {
                     enemy.attack();
                     dmg = enemy.attack() - def;
-                    if(dmg <= 0){
+                    if (dmg <= 0) {
                         dmg = 0;
                     }
                     character.setRestHp(character.getHp() - dmg);
@@ -306,7 +326,7 @@ public class Programm {
                     if (enemy.getMp() >= 5) {
                         enemy.sattack();
                         dmg = enemy.attack() - def;
-                        if(dmg <= 0){
+                        if (dmg <= 0) {
                             dmg = 0;
                         }
                         character.setRestHp(character.getHp() - dmg);
@@ -319,8 +339,7 @@ public class Programm {
                         }
                         enemy.setRestMp(enemy.getMp() - 5);
                         enemy.setMp(enemy.getRestMp());
-                    }
-                    else {
+                    } else {
                         System.out.println("The " + enemy.getName() + " is out of Mana and attacks " + characterName + "!");
                         enemy.attack();
                     }
@@ -333,7 +352,7 @@ public class Programm {
                 if (attack == 1) {
                     dmg = character.attack();
                     enemy.setRestHp(enemy.getHp() - dmg);
-                    System.out.println(characterName + " did " + dmg + " points of Damage to the " + enemy.getName() +"!");
+                    System.out.println(characterName + " did " + dmg + " points of Damage to the " + enemy.getName() + "!");
                     enemy.setHp(enemy.getRestHp());
                     if (enemy.getHp() > 0) {
                         System.out.println("The " + enemy.getName() + " has " + enemy.getHp() + " Health left!");
@@ -341,10 +360,10 @@ public class Programm {
                         System.out.println("The " + enemy.getName() + " has no more Health left!");
                     }
                 } else {
-                    if (character.getMp() >= 5){
+                    if (character.getMp() >= 5) {
                         dmg = character.sattack();
                         enemy.setRestHp(enemy.getHp() - dmg);
-                        System.out.println(characterName + " did " + dmg + " points of Damage to the " + enemy.getName() +"!");
+                        System.out.println(characterName + " did " + dmg + " points of Damage to the " + enemy.getName() + "!");
                         enemy.setHp(enemy.getRestHp());
                         if (enemy.getHp() > 0) {
                             System.out.println("The " + enemy.getName() + " has " + enemy.getHp() + " Health left!");
@@ -356,8 +375,7 @@ public class Programm {
                         System.out.println("");
                         System.out.println(characterName + " has " + character.getMp() + " of " + character.getStartMp() + " Mana left to use.");
                         System.out.println("");
-                    }
-                    else {
+                    } else {
                         System.out.println("");
                         System.out.println(characterName + " has " + character.getMp() + " left to use.");
                         System.out.println("");
@@ -384,6 +402,10 @@ public class Programm {
 
             } while (character.getHp() > 0 || enemy.getHp() > 0);
         }
+
+
         scanner.close();
+
+        */
     }
 }

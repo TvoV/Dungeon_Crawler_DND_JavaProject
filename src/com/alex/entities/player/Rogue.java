@@ -1,4 +1,4 @@
-package com.alex.entities;
+package com.alex.entities.player;
 
 import com.alex.items.Armor;
 import com.alex.items.Weapon;
@@ -39,18 +39,20 @@ public class Rogue extends PlayerCharacter {
     @ Override
     public int attack()
     {
+        this.setCurrentState("Attack");
+        int as = weapon.getAttackstat();
         int wb = weapon.getWeaponbonus();
         int dmg = 0;
-        int hit = random.nextInt(0, 100) + 1 + wb;
-        if (hit < 20)
+        int hit = random.nextInt(0, 101) + 1;
+        if (hit <= 20)
         {
-            dmg = random.nextInt(18,24) + 1;
-            System.out.println("Critical hit!");
+            dmg = random.nextInt(18,26) + as + (wb / 2);
+            this.setCurrentState("Critical hit");
             return dmg;
         }
-        if (hit < 100)
+        else if (hit <= 100)
         {
-            dmg = random.nextInt(12,16) + 1;
+            dmg = random.nextInt(12,17) + as + (wb / 2);
             return dmg;
         }
         return dmg;
@@ -59,21 +61,44 @@ public class Rogue extends PlayerCharacter {
     @ Override
     public int sattack()
     {
+        this.setCurrentState("Shadow Strike");
+        int as = weapon.getAttackstat();
         int wb = weapon.getWeaponbonus();
         int dmg = 0;
-        int hit = random.nextInt(0, 100) + 1;
-        if (hit < 25)
+        int hit = random.nextInt(0, 101) + 1;
+        if (hit <= 25)
         {
-            dmg = random.nextInt(36,48) + 1;
-            System.out.println("Critical hit!");
+            dmg = random.nextInt(36,48) + 1 + as + (wb / 2);
+            this.setCurrentState("critical Shadow Strike");
             return dmg;
         }
-        if (hit < 90)
+        else if (hit <= 90)
         {
-            dmg = random.nextInt(24,32) + 1;
+            dmg = random.nextInt(24,32) + 1 + as + (wb / 2);
             return dmg;
         }
-        System.out.println("Attack has missed!");
         return dmg;
+    }
+
+    @ Override
+    public int getDexterity() {
+        return super.getDexterity() + this.getWeapon().getWeaponbonus();
+    }
+
+    @ Override
+    public int getConstitution() {
+        return super.getConstitution() + this.getArmor().getArmorbonus();
+    }
+
+    @Override
+    public int getStartHp() {
+        return super.getStartHp() + this.getArmor().getArmorbonus() * 4;
+    }
+
+    @ Override
+    public int getHp() {
+        if (armor != null)
+            return super.getHp() + this.getArmor().getArmorbonus() * 4;
+        return super.getHp();
     }
 }

@@ -1,4 +1,4 @@
-package com.alex.entities;
+package com.alex.entities.enemies;
 
 import java.util.Random;
 
@@ -10,30 +10,33 @@ public class Master_Thief extends Enemy {
                         int restHp,
                         int mp,
                         int startMp,
-                        int restMp) {
+                        int restMp,
+                        int defense) {
         super(name,
                 hp,
                 startHp,
                 restHp,
                 mp,
                 startMp,
-                restMp);
+                restMp,
+                defense);
     }
 
     @ Override
     public int attack()
     {
+        this.setCurrentState("Attack");
         int dmg = 0;
-        int hit = random.nextInt(0, 100) + 1;
-        if (hit < 10)
+        int hit = random.nextInt(0, 101) + 1;
+        if (hit <= 10)
         {
-            dmg = random.nextInt(12,16) + 1;
-            System.out.println("Critical hit!");
+            dmg = random.nextInt(12,17);
+            this.setCurrentState("Critical hit");
             return dmg;
         }
-        if (hit < 100)
+        if (hit <= 100)
         {
-            dmg = random.nextInt(8,12) + 1;
+            dmg = random.nextInt(8,13);
             return dmg;
         }
         return dmg;
@@ -42,20 +45,21 @@ public class Master_Thief extends Enemy {
     @ Override
     public int sattack()
     {
+        this.setCurrentState("Frenzy Slash");
         int dmg = 0;
-        int hit = random.nextInt(0, 100) + 1;
-        if (hit < 15)
+        int hit = random.nextInt(0, 101) + 1;
+        if (hit <= 15)
         {
-            dmg = random.nextInt(24,30) + 1;
-            System.out.println("Critical hit!");
+            dmg = random.nextInt(24,31);
+            this.setCurrentState("critical Frenzy Slash");
             return dmg;
         }
-        if (hit < 80)
+        if (hit <= 80)
         {
-            dmg = random.nextInt(16,20) + 1;
+            dmg = random.nextInt(16,21);
             return dmg;
         }
-        System.out.println("Attack has missed!");
+
         return dmg;
     }
 }
