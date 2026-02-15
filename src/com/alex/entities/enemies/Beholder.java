@@ -22,6 +22,9 @@ public class Beholder extends Enemy{
                 defense);
     }
 
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der normalen Attacke
+    // -------------------------------------------------------------------------
     @ Override
     public int attack()
     {
@@ -41,6 +44,10 @@ public class Beholder extends Enemy{
         }
         return dmg;
     }
+
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der Spezial Attacke
+    // -------------------------------------------------------------------------
 
     @ Override
     public int sattack()

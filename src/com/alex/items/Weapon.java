@@ -31,10 +31,6 @@ public class Weapon extends Item{
         return weaponbonus;
     }
 
-    public void setWeaponbonus(int weaponbonus) {
-        this.weaponbonus = weaponbonus;
-    }
-
     public int getAttackstat() {
         return attackstat;
     }

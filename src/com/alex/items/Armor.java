@@ -30,16 +30,8 @@ public class Armor extends Item{
     public int getDefensestat() {
         return defensestat;
     }
-
-    public void setDefensestat(int defensestat) {
-        this.defensestat = defensestat;
-    }
-
     public int getArmorbonus() {
         return armorbonus;
     }
 
-    public void setArmorbonus(int armorbonus) {
-        this.armorbonus = armorbonus;
-    }
 }

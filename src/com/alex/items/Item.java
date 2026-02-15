@@ -57,15 +57,4 @@ public class Item {
         this.name = name;
     }
 
-    public void setBuyValue(int buyValue) {
-        this.buyValue = buyValue;
-    }
-
-    public void setSellValue(int sellValue) {
-        this.sellValue = sellValue;
-    }
-
-    public void setConsumable(boolean consumable) {
-        isConsumable = consumable;
-    }
 }

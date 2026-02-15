@@ -1,8 +1,7 @@
 package com.alex.dungeon;
 
 import com.alex.entities.player.PlayerCharacter;
-import com.alex.items.Armor;
-import com.alex.items.Weapon;
+
 
 public class Player {
     private String name;

@@ -2,6 +2,10 @@ package com.alex.engines;
 
 import java.util.Random;
 
+// -------------------------------------------------------------------------
+// Flavortext für das Combat Log
+// -------------------------------------------------------------------------
+
 public class EncounterManager {
     private static final Random random = new Random();
     private static final String[] Encounter_Texts = {

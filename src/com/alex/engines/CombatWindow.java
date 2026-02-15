@@ -10,9 +10,9 @@ import com.alex.items.*;
 import javax.swing.*;
 import java.awt.*;
 
-// ----------------------------------------------------------------------------
-// JFrame Generierung für Combat Window  // Hauptapplikation
-// ----------------------------------------------------------------------------
+    // ----------------------------------------------------------------------------
+    // JFrame Generierung für Combat Window  // Hauptapplikation
+    // ----------------------------------------------------------------------------
 
 public class CombatWindow extends JFrame {
 
@@ -25,7 +25,6 @@ public class CombatWindow extends JFrame {
     private PlayerCharacter player;
     private Enemy enemy;
     private JProgressBar playerHealthBar, playerManaBar, enemyHealthBar;
-    private JLabel enemyImageLabel;
     private JTextArea combatLog;
     private JLabel enemySpriteLabel;
 
@@ -184,7 +183,7 @@ public class CombatWindow extends JFrame {
         if (enemy.getHp() <= 0) {
             enemy.setHp(0);
             updateBars();
-            enemySpriteLabel.setEnabled(false);         // kleines Death Highlight
+            enemySpriteLabel.setEnabled(false);         // kleines Death Highlight, weißes Highlight
             Item item = currentField.getLootItem();
             if (item != null) {
                 player.addToInventory(item);

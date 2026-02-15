@@ -37,6 +37,10 @@ public class Warrior extends PlayerCharacter {
                 armor);
     }
 
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der normalen Attacke
+    // -------------------------------------------------------------------------
+
     @ Override
     public int attack()
     {
@@ -46,6 +50,10 @@ public class Warrior extends PlayerCharacter {
         int dmg = random.nextInt(12,17) + as + (wb / 2);
         return dmg;
     }
+
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der Spezial Attacke
+    // -------------------------------------------------------------------------
 
     @ Override
     public int sattack()

@@ -22,6 +22,10 @@ public class Master_Thief extends Enemy {
                 defense);
     }
 
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der normalen Attacke
+    // -------------------------------------------------------------------------
+
     @ Override
     public int attack()
     {
@@ -41,6 +45,10 @@ public class Master_Thief extends Enemy {
         }
         return dmg;
     }
+
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der Spezial Attacke
+    // -------------------------------------------------------------------------
 
     @ Override
     public int sattack()

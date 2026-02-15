@@ -23,6 +23,10 @@ public class Skeleton extends Enemy {
                 defense);
     }
 
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der normalen Attacke
+    // -------------------------------------------------------------------------
+
     @ Override
     public int attack()
     {

@@ -5,6 +5,10 @@ import com.alex.items.ItemRegistry;
 
 public class PlayerFactory {
 
+    // -------------------------------------------------------------------------
+    // Instanziierung der Spielercharaktere
+    // -------------------------------------------------------------------------
+
     public static PlayerCharacter createCharacter(int selection, String name) {
         return switch (selection) {
             case 1 -> new Warrior(name,

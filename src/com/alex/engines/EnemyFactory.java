@@ -4,6 +4,10 @@ import com.alex.entities.enemies.*;
 
 import java.util.Random;
 
+// -------------------------------------------------------------------------
+// Instanziierung der Gegner und des Bosses
+// -------------------------------------------------------------------------
+
 public class EnemyFactory {
 
     private static final Random random = new Random();

@@ -91,7 +91,9 @@ public class ItemRegistry {
 
     public static Item getLoot(String name, PlayerCharacter player) {
 
+
         // Weapons basierend auf Klasse
+
         if (player instanceof Warrior || player instanceof Cleric) {
             for (Weapon weapon : strWeapons) if (weapon.getName().equalsIgnoreCase(name)) return weapon;
         }
@@ -102,7 +104,9 @@ public class ItemRegistry {
             for (Weapon weapon : intWeapons) if (weapon.getName().equalsIgnoreCase(name)) return weapon;
         }
 
+
         // Armors basierend auf Klasse
+
         if (player instanceof Warrior || player instanceof Cleric) {
             for (Armor armor : heavyArmors) if (armor.getName().equalsIgnoreCase(name)) return armor;
         }

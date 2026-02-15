@@ -16,6 +16,7 @@ public class MainMenu extends JFrame {
         setResizable(false);
 
         // Haupt-Panel (Dunkles Design)
+
         JPanel panel = new JPanel();
         panel.setBackground(new Color(20, 20, 20));
         panel.setLayout(new GridBagLayout());
@@ -29,15 +30,18 @@ public class MainMenu extends JFrame {
         gbc.gridy = 0;
         panel.add(title, gbc);
 
-        // Charakter-Buttons
+        // -------------------------------------------------------------------------
+        // Charakter-Auswahl-Buttons im Hauptmenü
+        // -------------------------------------------------------------------------
+
         gbc.gridy = 1;
-        panel.add(createClassButton("Warrior", "High HP & Strength"), gbc);
+        panel.add(createClassButton("Warrior", "High HP & Damage"), gbc);
         gbc.gridy = 2;
-        panel.add(createClassButton("Mage", "High Mana & Spells"), gbc);
+        panel.add(createClassButton("Mage", "High Mana & strong Spells"), gbc);
         gbc.gridy = 3;
-        panel.add(createClassButton("Rogue", "High Agility & Crits"), gbc);
+        panel.add(createClassButton("Rogue", "High Crit. Chance and Strong Crit. Damage"), gbc);
         gbc.gridy = 4;
-        panel.add(createClassButton("Cleric", "Balanced & Holy Magic"), gbc);
+        panel.add(createClassButton("Cleric", "Balance of Bulk and Mana"), gbc);
 
         add(panel);
         setVisible(true);
@@ -56,6 +60,10 @@ public class MainMenu extends JFrame {
         btn.addActionListener(e -> startGame(name));
         return btn;
     }
+
+    // -------------------------------------------------------------------------
+    // JPane Popout für Namensgebung
+    // -------------------------------------------------------------------------
 
     private void startGame(String className) {
         String name = JOptionPane.showInputDialog(this, "Enter your name, hero:", className);

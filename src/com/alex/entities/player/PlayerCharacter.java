@@ -179,31 +179,4 @@ public class PlayerCharacter extends Entity {
         return armor;
     }
 
-    // ----------------------------------------------------------------------
-    // Setter
-    // ----------------------------------------------------------------------
-
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public void setDexterity(int dexterity) {
-        this.dexterity = dexterity;
-    }
-
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
-    }
-
-    public void setConstitution(int constitution) {
-        this.constitution = constitution;
-    }
-
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
-    }
-
-    public void setArmor(Armor armor) {
-        this.armor = armor;
-    }
 }

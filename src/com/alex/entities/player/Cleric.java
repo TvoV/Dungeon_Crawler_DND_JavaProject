@@ -36,6 +36,10 @@ public class Cleric extends PlayerCharacter {
                 armor);
     }
 
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der normalen Attacke
+    // -------------------------------------------------------------------------
+
     @ Override
     public int attack()
     {
@@ -45,6 +49,10 @@ public class Cleric extends PlayerCharacter {
         int dmg = random.nextInt(10,15) + as + (wb / 2);
         return dmg;
     }
+
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der Spezial Attacke
+    // -------------------------------------------------------------------------
 
     @ Override
     public int sattack()

@@ -22,6 +22,10 @@ public class Oathbreaker extends Enemy {
                 defense);
     }
 
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der normalen Attacke
+    // -------------------------------------------------------------------------
+
     @ Override
     public int attack()
     {
@@ -29,6 +33,10 @@ public class Oathbreaker extends Enemy {
         int dmg = random.nextInt(15,21);
         return dmg;
     }
+
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der Spezial Attacke
+    // -------------------------------------------------------------------------
 
     @ Override
     public int sattack()

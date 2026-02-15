@@ -23,6 +23,10 @@ public class Gnoll extends Enemy {
                     defense);
     }
 
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der normalen Attacke
+    // -------------------------------------------------------------------------
+
         @ Override
         public int attack()
         {
@@ -30,6 +34,10 @@ public class Gnoll extends Enemy {
             int dmg = random.nextInt(8,11);
             return dmg;
         }
+
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der Spezial Attacke
+    // -------------------------------------------------------------------------
 
         @ Override
         public int sattack()

@@ -23,6 +23,10 @@ public class Troglodyte extends Enemy{
                 defense);
     }
 
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der normalen Attacke
+    // -------------------------------------------------------------------------
+
     @ Override
     public int attack()
     {
@@ -30,6 +34,10 @@ public class Troglodyte extends Enemy{
         int dmg = random.nextInt(12,17);
         return dmg;
     }
+
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der Spezial Attacke
+    // -------------------------------------------------------------------------
 
     @ Override
     public int sattack()

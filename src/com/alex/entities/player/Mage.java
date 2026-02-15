@@ -36,6 +36,10 @@ public class Mage extends PlayerCharacter {
                 armor);
     }
 
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der normalen Attacke
+    // -------------------------------------------------------------------------
+
     @ Override
     public int attack()
     {
@@ -45,6 +49,10 @@ public class Mage extends PlayerCharacter {
         int dmg = random.nextInt(7,9) + as + (wb / 2);
         return dmg;
     }
+
+    // -------------------------------------------------------------------------
+    // Individuelle Schadenberechnung der Spezial Attacke
+    // -------------------------------------------------------------------------
 
     @ Override
     public int sattack()

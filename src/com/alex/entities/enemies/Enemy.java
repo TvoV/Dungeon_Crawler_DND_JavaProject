@@ -12,11 +12,10 @@ public class Enemy extends Entity {
 
     private Random random;
     private int defense;
+
     // ----------------------------------------------------------------------
     // Constructor
     // ----------------------------------------------------------------------
-
-
     public Enemy(String name,
                            int hp,
                            int startHp,
